@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TrabajoFinal</string>
+    <string name="btn_añadir">Añadir Película</string>
+    <string name="btn_listar">Consultar Películas</string>
+    <string name="btn_salir">Salir</string>
+    <string name="hint_buscar">Introduce el título de la película</string>
+    <string name="btn_buscar">Buscar</string>
+</resources>
