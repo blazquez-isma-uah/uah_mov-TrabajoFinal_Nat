@@ -5,4 +5,6 @@
     <string name="btn_salir">Exit</string>
     <string name="hint_buscar">Enter the movie title</string>
     <string name="btn_buscar">Search</string>
+    <string name="anio">"Year</string>
+    <string name="tituloPelicula">Movie Title</string>
 </resources>

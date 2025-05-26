@@ -19,7 +19,8 @@ public class BuscarPeliculaActivity extends AppCompatActivity {
     private Button buttonBuscar;
     private RecyclerView recyclerViewResultados;
 
-    private List<String> listaPeliculas;
+    private List<Pelicula> listaPeliculas;
+    private PeliculasAdapter peliculaAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +62,18 @@ public class BuscarPeliculaActivity extends AppCompatActivity {
 
         // Generamos películas simuladas
         for (int i = 1; i <= 5; i++) {
-            listaPeliculas.add(titulo + " - Película " + i);
+            Pelicula pelicula = new Pelicula(titulo + " " + i, "20" + (10 + i));
+            listaPeliculas.add(pelicula);
         }
 
-        // Por ahora mostramos los resultados por consola (log o toast)
-        Toast.makeText(this, "Encontradas " + listaPeliculas.size() + " películas",
-                Toast.LENGTH_SHORT).show();
-
-        // TODO: Actualizar el RecyclerView con un adapter
+        // Si es la primera vez que se carga el adapter, se crea
+        if (peliculaAdapter == null) {
+            peliculaAdapter = new PeliculasAdapter(listaPeliculas);
+            recyclerViewResultados.setAdapter(peliculaAdapter);
+        } else {
+            // Si ya existe, solo se actualiza la lista
+            peliculaAdapter.notifyDataSetChanged();
+        }
     }
 
 }

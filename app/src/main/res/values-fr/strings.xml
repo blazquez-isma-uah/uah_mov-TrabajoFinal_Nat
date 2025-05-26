@@ -5,4 +5,6 @@
     <string name="btn_salir">Quitter</string>
     <string name="hint_buscar">Entrez le titre du film</string>
     <string name="btn_buscar">Rechercher</string>
+    <string name="anio">Année</string>
+    <string name="tituloPelicula">Film titre</string>
 </resources>
