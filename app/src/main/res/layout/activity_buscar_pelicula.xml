@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context=".BuscarPeliculaActivity">
+
+    <!-- Campo de texto para introducir el título a buscar -->
+    <EditText
+        android:id="@+id/editTextBuscar"
+        android:hint="@string/hint_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+
+    <!-- Botón para realizar la búsqueda -->
+    <Button
+        android:id="@+id/buttonBuscar"
+        android:text="@string/btn_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- RecyclerView para mostrar los resultados -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPeliculas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

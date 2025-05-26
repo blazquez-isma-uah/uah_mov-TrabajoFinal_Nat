@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FinalWork</string>
+    <string name="btn_añadir">Add Movie</string>
+    <string name="btn_listar">View Movies</string>
+    <string name="btn_salir">Exit</string>
+    <string name="hint_buscar">Enter the movie title</string>
+    <string name="btn_buscar">Search</string>
+</resources>
