@@ -7,4 +7,6 @@
     <string name="btn_buscar">Buscar</string>
     <string name="anio">Año</string>
     <string name="tituloPelicula">Título de la película</string>
+
+    <string name="ombd_api_key" translatable="false">7362165d</string>
 </resources>

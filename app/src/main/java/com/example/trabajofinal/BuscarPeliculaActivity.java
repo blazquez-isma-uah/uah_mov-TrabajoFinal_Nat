@@ -10,8 +10,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.trabajofinal.omdb.PeliculaOMDB;
+import com.example.trabajofinal.omdb.PeliculasAdapter;
+import com.example.trabajofinal.omdb.SearchResponseOMDB;
+import com.example.trabajofinal.omdb.ServiceOMDB;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BuscarPeliculaActivity extends AppCompatActivity {
 
@@ -19,14 +30,29 @@ public class BuscarPeliculaActivity extends AppCompatActivity {
     private Button buttonBuscar;
     private RecyclerView recyclerViewResultados;
 
-    private List<Pelicula> listaPeliculas;
+    private List<PeliculaOMDB> listaPeliculas;
     private PeliculasAdapter peliculaAdapter;
+
+
+    private ServiceOMDB service;
+    private String apiKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_buscar_pelicula);
+
+        // Recuperar apiKey
+        apiKey = getString(R.string.ombd_api_key);
+
+        // Configurar Retrofit con la url de la API
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.omdbapi.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        // Crear la instancia del servicio
+        service = retrofit.create(ServiceOMDB.class);
 
         editTextBuscar = findViewById(R.id.editTextBuscar);
         buttonBuscar = findViewById(R.id.buttonBuscar);
@@ -48,32 +74,50 @@ public class BuscarPeliculaActivity extends AppCompatActivity {
                 return;
             }
             // Simular una búsqueda de películas (despues se hará una consulta a una API o base de datos)
-            simularResultados(titulo);
+            buscarPeliculasOMDB(titulo);
         });
 
     }
 
-    /**
-     * Simula resultados para probar la interfaz.
-     * Más adelante se sustituirá por una llamada a la API real.
-     */
-    private void simularResultados(String titulo) {
-        listaPeliculas.clear(); // Limpiamos resultados anteriores
+    public void buscarPeliculasOMDB(String titulo){
+        listaPeliculas.clear();
 
-        // Generamos películas simuladas
-        for (int i = 1; i <= 5; i++) {
-            Pelicula pelicula = new Pelicula(titulo + " " + i, "20" + (10 + i));
-            listaPeliculas.add(pelicula);
-        }
+        Call<SearchResponseOMDB> call = service.buscarPeliculas(apiKey, titulo);
 
-        // Si es la primera vez que se carga el adapter, se crea
-        if (peliculaAdapter == null) {
-            peliculaAdapter = new PeliculasAdapter(listaPeliculas);
-            recyclerViewResultados.setAdapter(peliculaAdapter);
-        } else {
-            // Si ya existe, solo se actualiza la lista
-            peliculaAdapter.notifyDataSetChanged();
-        }
+        call.enqueue(new Callback<SearchResponseOMDB>() {
+            @Override
+            public void onResponse(Call<SearchResponseOMDB> call, Response<SearchResponseOMDB> response) {
+                if(response.isSuccessful() && response.body() != null) {
+                    SearchResponseOMDB searchResponse = response.body();
+                    if (searchResponse.getSearchResults() != null && !searchResponse.getSearchResults().isEmpty()) {
+                        listaPeliculas.addAll(searchResponse.getSearchResults());
+                        // Configurar el adaptador con la lista de películas
+                        if(peliculaAdapter == null) {
+                            peliculaAdapter = new PeliculasAdapter(listaPeliculas);
+                            recyclerViewResultados.setAdapter(peliculaAdapter);
+                        } else {
+                            peliculaAdapter.notifyDataSetChanged();
+                        }
+
+                        Toast.makeText(BuscarPeliculaActivity.this,
+                                "Se encontraron " + listaPeliculas.size() + " resultados", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(BuscarPeliculaActivity.this, "No se encontraron resultados", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(BuscarPeliculaActivity.this, "Error en la búsqueda", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SearchResponseOMDB> call, Throwable t) {
+                Toast.makeText(BuscarPeliculaActivity.this,
+                        "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
 }

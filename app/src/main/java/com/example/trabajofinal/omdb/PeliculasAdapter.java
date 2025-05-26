@@ -1,4 +1,4 @@
-package com.example.trabajofinal;
+package com.example.trabajofinal.omdb;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.trabajofinal.R;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -17,9 +19,9 @@ import java.util.List;
  */
 public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.PeliculaViewHolder> {
 
-    private List<Pelicula> listaPeliculas;
+    private List<PeliculaOMDB> listaPeliculas;
 
-    public PeliculasAdapter(List<Pelicula> listaPeliculas) {
+    public PeliculasAdapter(List<PeliculaOMDB> listaPeliculas) {
         this.listaPeliculas = listaPeliculas;
     }
 
@@ -34,7 +36,7 @@ public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.Peli
     @Override
     public void onBindViewHolder(@NotNull PeliculaViewHolder holder, int position) {
         // Obtener la película actual
-        Pelicula pelicula = listaPeliculas.get(position);
+        PeliculaOMDB pelicula = listaPeliculas.get(position);
 
         // Asignar los datos de la película a las vistas del ViewHolder
         holder.textViewTitulo.setText(pelicula.getTitulo());

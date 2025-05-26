@@ -1,14 +1,20 @@
-package com.example.trabajofinal;
+package com.example.trabajofinal.omdb;
 
-public class Pelicula {
+import com.google.gson.annotations.SerializedName;
+
+public class PeliculaOMDB {
+
+    @SerializedName("Title")
     private String titulo;
+
+    @SerializedName("Year")
     private String anio;
 
-    public Pelicula() {
+    public PeliculaOMDB() {
         // Constructor vacío
     }
 
-    public Pelicula(String titulo, String anio) {
+    public PeliculaOMDB(String titulo, String anio) {
         this.titulo = titulo;
         this.anio = anio;
     }
