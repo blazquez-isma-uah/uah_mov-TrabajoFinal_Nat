@@ -7,9 +7,9 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import android.app.DatePickerDialog;
+
+import java.util.Calendar;
 
 public class FormularioActivity extends AppCompatActivity {
 
@@ -39,6 +39,24 @@ public class FormularioActivity extends AppCompatActivity {
         editTextTitulo.setText(titulo);
         editTextAnio.setText(anio);
         editTextActor.setText(actor);
+
+        // Al hacer clic en el campo Fecha, se abre un selector de calendario
+        editTextFecha.setOnClickListener(v -> {
+            // Obtiene la fecha actual como punto de partida
+            final Calendar calendario = Calendar.getInstance();
+            int year = calendario.get(Calendar.YEAR);
+            int month = calendario.get(Calendar.MONTH);
+            int day = calendario.get(Calendar.DAY_OF_MONTH);
+
+            // Crea un DatePickerDialog para seleccionar la fecha
+            new DatePickerDialog(FormularioActivity.this,
+                    (view, selectedYear, selectedMonth, selectedDay) -> {
+                // Formatea la fecha seleccionada
+                String fechaSeleccionada = String.format("%02d/%02d/%04d", selectedDay, selectedMonth + 1, selectedYear);
+                editTextFecha.setText(fechaSeleccionada);
+            }, year, month, day).show();
+
+        });
 
         // Listener para el botón Guardar
         buttonGuardar.setOnClickListener(v -> {
