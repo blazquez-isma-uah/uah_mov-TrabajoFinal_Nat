@@ -9,6 +9,9 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 
+import com.example.trabajofinal.sqlite.AppDatabase;
+import com.example.trabajofinal.sqlite.PeliculaGuardada;
+
 import java.util.Calendar;
 
 public class FormularioActivity extends AppCompatActivity {
@@ -70,7 +73,20 @@ public class FormularioActivity extends AppCompatActivity {
                 return;
             }
 
-            Toast.makeText(this, "Película guardada", Toast.LENGTH_LONG).show();
+            // Crear un objeto Pelicula con los datos del formulario
+            PeliculaGuardada peliculaGuardada = new PeliculaGuardada(
+                    editTextTitulo.getText().toString(),
+                    editTextAnio.getText().toString(),
+                    editTextActor.getText().toString(),
+                    fecha,
+                    ciudad
+            );
+
+            // Guardar la película en la base de datos
+            AppDatabase db = AppDatabase.getInstance(this);
+            db.peliculaDao().insertarPelicula(peliculaGuardada);
+
+            Toast.makeText(this, "Película guardada correctamente", Toast.LENGTH_LONG).show();
             finish();
         });
 
