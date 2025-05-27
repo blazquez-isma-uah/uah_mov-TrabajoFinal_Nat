@@ -1,7 +1,9 @@
 package com.example.trabajofinal.sqlite;
 
+import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+@Entity
 public class PeliculaGuardada {
 
     @PrimaryKey(autoGenerate = true)

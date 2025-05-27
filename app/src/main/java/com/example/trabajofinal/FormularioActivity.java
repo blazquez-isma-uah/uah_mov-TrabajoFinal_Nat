@@ -78,8 +78,8 @@ public class FormularioActivity extends AppCompatActivity {
                     editTextTitulo.getText().toString(),
                     editTextAnio.getText().toString(),
                     editTextActor.getText().toString(),
-                    fecha,
-                    ciudad
+                    ciudad,
+                    fecha
             );
 
             // Guardar la película en la base de datos
