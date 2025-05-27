@@ -6,5 +6,9 @@
     <string name="hint_buscar">Entrez le titre du film</string>
     <string name="btn_buscar">Rechercher</string>
     <string name="anio">Année</string>
-    <string name="tituloPelicula">Film titre</string>
+    <string name="tituloPelicula">Film Titre</string>
+    <string name="actorPrincipal">Acteur Principal</string>
+    <string name="fechaVisionado">Date de visionnage</string>
+    <string name="ciudadVisionado">Ville de visionnage</string>
+    <string name="guardarPelicula">Enregistrer le film</string>
 </resources>

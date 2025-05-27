@@ -1,4 +1,6 @@
 <resources>
+    <string name="ombd_api_key" translatable="false">7362165d</string>
+
     <string name="app_name">TrabajoFinal</string>
     <string name="btn_añadir">Añadir Película</string>
     <string name="btn_listar">Consultar Películas</string>
@@ -7,6 +9,8 @@
     <string name="btn_buscar">Buscar</string>
     <string name="anio">Año</string>
     <string name="tituloPelicula">Título de la película</string>
-
-    <string name="ombd_api_key" translatable="false">7362165d</string>
+    <string name="actorPrincipal">Actor principal</string>
+    <string name="fechaVisionado">Fecha de visionado</string>
+    <string name="ciudadVisionado">Ciudad donde se vio</string>
+    <string name="guardarPelicula">Guardar película</string>
 </resources>

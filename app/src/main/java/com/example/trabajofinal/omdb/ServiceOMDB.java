@@ -12,7 +12,14 @@ public interface ServiceOMDB {
     @GET("/")
     Call<SearchResponseOMDB> buscarPeliculas(
             @Query("apikey") String apiKey,
+            @Query("type") String tipo,
             @Query("s") String titulo
+    );
+
+    @GET("/")
+    Call<PeliculaOMDB> obtenerDetallePelicula(
+            @Query("apikey") String apiKey,
+            @Query("i") String imdbID
     );
 
 }

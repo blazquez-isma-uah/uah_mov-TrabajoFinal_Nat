@@ -7,4 +7,8 @@
     <string name="btn_buscar">Search</string>
     <string name="anio">"Year</string>
     <string name="tituloPelicula">Movie Title</string>
+    <string name="actorPrincipal">Main Actor</string>
+    <string name="fechaVisionado">Viewing Date</string>
+    <string name="ciudadVisionado">City of Viewing</string>
+    <string name="guardarPelicula">Save Movie</string>
 </resources>

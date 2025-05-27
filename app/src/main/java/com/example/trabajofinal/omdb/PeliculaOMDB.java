@@ -10,13 +10,15 @@ public class PeliculaOMDB {
     @SerializedName("Year")
     private String anio;
 
+    @SerializedName("imdbID")
+    private String imdbID;
+
+    // Lista de actores separados por comas
+    @SerializedName("Actors")
+    private String actores;
+
     public PeliculaOMDB() {
         // Constructor vacío
-    }
-
-    public PeliculaOMDB(String titulo, String anio) {
-        this.titulo = titulo;
-        this.anio = anio;
     }
     public String getTitulo() {
         return titulo;
@@ -24,5 +26,23 @@ public class PeliculaOMDB {
 
     public String getAnio() {
         return anio;
+    }
+
+    public String getImdbID() {
+        return imdbID;
+    }
+
+    public String getActores() {
+        return actores;
+    }
+
+    public String getActorPrincipal(){
+        if (actores != null && !actores.isEmpty()) {
+            String[] actoresArray = actores.split(",");
+            if (actoresArray.length > 0) {
+                return actoresArray[0].trim(); // Retorna el primer actor como actor principal
+            }
+        }
+        return "Desconocido"; // Retorna "Desconocido" si no hay actores
     }
 }

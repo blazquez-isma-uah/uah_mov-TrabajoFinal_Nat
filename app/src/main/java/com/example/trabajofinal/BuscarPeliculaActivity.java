@@ -1,5 +1,6 @@
 package com.example.trabajofinal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -82,18 +83,22 @@ public class BuscarPeliculaActivity extends AppCompatActivity {
     public void buscarPeliculasOMDB(String titulo){
         listaPeliculas.clear();
 
-        Call<SearchResponseOMDB> call = service.buscarPeliculas(apiKey, titulo);
+        Call<SearchResponseOMDB> call = service.buscarPeliculas(apiKey, "movie", titulo);
+        System.out.println("Llamada a la API por titulo: " + call.request().url());
 
-        call.enqueue(new Callback<SearchResponseOMDB>() {
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<SearchResponseOMDB> call, Response<SearchResponseOMDB> response) {
-                if(response.isSuccessful() && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     SearchResponseOMDB searchResponse = response.body();
                     if (searchResponse.getSearchResults() != null && !searchResponse.getSearchResults().isEmpty()) {
                         listaPeliculas.addAll(searchResponse.getSearchResults());
                         // Configurar el adaptador con la lista de películas
-                        if(peliculaAdapter == null) {
-                            peliculaAdapter = new PeliculasAdapter(listaPeliculas);
+                        if (peliculaAdapter == null) {
+                            peliculaAdapter = new PeliculasAdapter(listaPeliculas, pelicula -> {
+                                // Llamada a la API para obtener los detalles de la película
+                                obtenerDetallesPelicula(pelicula.getImdbID());
+                            });
                             recyclerViewResultados.setAdapter(peliculaAdapter);
                         } else {
                             peliculaAdapter.notifyDataSetChanged();
@@ -118,6 +123,37 @@ public class BuscarPeliculaActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    /**
+     * Llamada a la API de OMDB para obtener los detalles de una pelicula por su imdbID.
+     */
+    public void obtenerDetallesPelicula(String imdbID) {
+        Call<PeliculaOMDB> call = service.obtenerDetallePelicula(apiKey, imdbID);
+        System.out.println("Llamada a la API por imdbID: " + call.request().url());
+        call.enqueue(new Callback<>() {
+            @Override
+            public void onResponse(Call<PeliculaOMDB> call, Response<PeliculaOMDB> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    PeliculaOMDB pelicula = response.body();
+
+                    // Obtener los datos de la película y pasarlos a la actividad del Formulario
+                    Intent intent = new Intent(BuscarPeliculaActivity.this, FormularioActivity.class);
+                    intent.putExtra("titulo", pelicula.getTitulo());
+                    intent.putExtra("anio", pelicula.getAnio());
+                    intent.putExtra("actor", pelicula.getActorPrincipal());
+                    startActivity(intent);
+
+                } else {
+                    Toast.makeText(BuscarPeliculaActivity.this, "Error al obtener los detalles de la película", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PeliculaOMDB> call, Throwable t) {
+                Toast.makeText(BuscarPeliculaActivity.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

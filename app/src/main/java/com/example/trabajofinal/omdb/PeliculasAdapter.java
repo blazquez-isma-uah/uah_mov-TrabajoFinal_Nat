@@ -20,9 +20,12 @@ import java.util.List;
 public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.PeliculaViewHolder> {
 
     private List<PeliculaOMDB> listaPeliculas;
+    // Listener para manejar los clics en las películas
+    private OnPeliculaClickListener listener;
 
-    public PeliculasAdapter(List<PeliculaOMDB> listaPeliculas) {
+    public PeliculasAdapter(List<PeliculaOMDB> listaPeliculas, OnPeliculaClickListener listener) {
         this.listaPeliculas = listaPeliculas;
+        this.listener = listener;
     }
 
     @NotNull
@@ -41,12 +44,23 @@ public class PeliculasAdapter extends RecyclerView.Adapter<PeliculasAdapter.Peli
         // Asignar los datos de la película a las vistas del ViewHolder
         holder.textViewTitulo.setText(pelicula.getTitulo());
         holder.textViewAnio.setText(pelicula.getAnio());
+
+        // Configurar el listener para manejar los clics en la película
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onPeliculaClick(pelicula);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         // Devolver el número total de películas en la lista
         return listaPeliculas.size();
+    }
+
+    public interface OnPeliculaClickListener {
+        void onPeliculaClick(PeliculaOMDB pelicula);
     }
 
     /**
