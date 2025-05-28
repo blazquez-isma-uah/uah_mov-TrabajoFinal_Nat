@@ -11,4 +11,6 @@
     <string name="fechaVisionado">Viewing Date</string>
     <string name="ciudadVisionado">City of Viewing</string>
     <string name="guardarPelicula">Save Movie</string>
+    <string name="eliminarPeliculas">Delete all movies</string>
+    <string name="volver">Back</string>
 </resources>

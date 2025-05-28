@@ -14,4 +14,11 @@ public interface PeliculaDao {
 
     @Query("SELECT * FROM PeliculaGuardada")
     List<PeliculaGuardada> obtenerTodas();
+
+    @Query("DELETE FROM PeliculaGuardada WHERE id = :id")
+    void eliminarPorId(int id);
+
+    @Query("DELETE FROM PeliculaGuardada")
+    void eliminarTodas();
+
 }

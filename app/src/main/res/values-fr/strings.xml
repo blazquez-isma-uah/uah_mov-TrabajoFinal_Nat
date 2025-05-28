@@ -11,4 +11,6 @@
     <string name="fechaVisionado">Date de visionnage</string>
     <string name="ciudadVisionado">Ville de visionnage</string>
     <string name="guardarPelicula">Enregistrer le film</string>
+    <string name="eliminarPeliculas">Supprimer tous les films</string>
+    <string name="volver">Retour</string>
 </resources>

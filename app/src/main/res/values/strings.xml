@@ -13,4 +13,6 @@
     <string name="fechaVisionado">Fecha de visionado</string>
     <string name="ciudadVisionado">Ciudad donde se vio</string>
     <string name="guardarPelicula">Guardar película</string>
+    <string name="eliminarPeliculas">Eliminar todas las películas</string>
+    <string name="volver">Volver</string>
 </resources>
