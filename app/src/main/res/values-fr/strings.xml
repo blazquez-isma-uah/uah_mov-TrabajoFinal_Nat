@@ -6,11 +6,28 @@
     <string name="hint_buscar">Entrez le titre du film</string>
     <string name="btn_buscar">Rechercher</string>
     <string name="anio">Année</string>
-    <string name="tituloPelicula">Film Titre</string>
-    <string name="actorPrincipal">Acteur Principal</string>
-    <string name="fechaVisionado">Date de visionnage</string>
-    <string name="ciudadVisionado">Ville de visionnage</string>
-    <string name="guardarPelicula">Enregistrer le film</string>
-    <string name="eliminarPeliculas">Supprimer tous les films</string>
+    <string name="titulo_pelicula">Film Titre</string>
+    <string name="actor_principal">Acteur Principal</string>
+    <string name="fecha_visionado">Date de visionnage</string>
+    <string name="ciudad_visionado">Ville de visionnage</string>
+    <string name="guardar_pelicula">Enregistrer le film</string>
+    <string name="eliminar_peliculas">Supprimer tous les films</string>
     <string name="volver">Retour</string>
+    <string name="campos_vacios">Veuillez remplir tous les champs</string>
+    <string name="pelicula_guardada">Film enregistré avec succès</string>
+    <string name="error_titulo">Veuillez entrer un titre</string>
+    <string name="resultados_encontrados">%1$d résultats trouvés</string>
+    <string name="sin_resultados">Aucun résultat trouvé</string>
+    <string name="error_busqueda">Erreur de recherche</string>
+    <string name="error_conexion">Erreur de connexion : %1$s</string>
+    <string name="error_detalle">Erreur lors de la récupération des détails du film</string>
+    <string name="titulo_alerta_eliminar">Supprimer le film</string>
+    <string name="mensaje_alerta_eliminar">Êtes-vous sûr de vouloir supprimer ce film ?</string>
+    <string name="pelicula_eliminada">Film supprimé</string>
+    <string name="eliminar_todas_titulo">Supprimer tous les films</string>
+    <string name="eliminar_todas_mensaje">Êtes-vous sûr de vouloir supprimer tous les films enregistrés ?</string>
+    <string name="peliculas_eliminadas">Tous les films ont été supprimés.</string>
+    <string name="aceptar">OK</string>
+    <string name="cancelar">Annuler</string>
+
 </resources>

@@ -8,11 +8,28 @@
     <string name="hint_buscar">Introduce el título de la película</string>
     <string name="btn_buscar">Buscar</string>
     <string name="anio">Año</string>
-    <string name="tituloPelicula">Título de la película</string>
-    <string name="actorPrincipal">Actor principal</string>
-    <string name="fechaVisionado">Fecha de visionado</string>
-    <string name="ciudadVisionado">Ciudad donde se vio</string>
-    <string name="guardarPelicula">Guardar película</string>
-    <string name="eliminarPeliculas">Eliminar todas las películas</string>
+    <string name="titulo_pelicula">Título de la película</string>
+    <string name="actor_principal">Actor principal</string>
+    <string name="fecha_visionado">Fecha de visionado</string>
+    <string name="ciudad_visionado">Ciudad donde se vio</string>
+    <string name="guardar_pelicula">Guardar película</string>
+    <string name="eliminar_peliculas">Eliminar todas las películas</string>
     <string name="volver">Volver</string>
+    <string name="campos_vacios">Debes rellenar todos los campos</string>
+    <string name="pelicula_guardada">Película guardada correctamente</string>
+    <string name="error_titulo">Por favor, introduce un título</string>
+    <string name="resultados_encontrados">Se encontraron %1$d resultados</string>
+    <string name="sin_resultados">No se encontraron resultados</string>
+    <string name="error_busqueda">Error en la búsqueda</string>
+    <string name="error_conexion">Error de conexión: %1$s</string>
+    <string name="error_detalle">Error al obtener los detalles de la película</string>
+    <string name="titulo_alerta_eliminar">Eliminar película</string>
+    <string name="mensaje_alerta_eliminar">¿Estás seguro de eliminar esta película?</string>
+    <string name="pelicula_eliminada">Película eliminada</string>
+    <string name="eliminar_todas_titulo">Eliminar todas las películas</string>
+    <string name="eliminar_todas_mensaje">¿Estás seguro de que quieres eliminar todas las películas guardadas?</string>
+    <string name="peliculas_eliminadas">Todas las películas han sido eliminadas.</string>
+    <string name="aceptar">OK</string>
+    <string name="cancelar">Cancelar</string>
+
 </resources>

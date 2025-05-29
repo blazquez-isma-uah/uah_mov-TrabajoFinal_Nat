@@ -11,7 +11,7 @@
 
     <Button
         android:id="@+id/buttonEliminarTodas"
-        android:text="@string/eliminarPeliculas"
+        android:text="@string/eliminar_peliculas"
         android:background="#FF4444"
         android:textColor="#FFFFFF"
         android:layout_width="match_parent"

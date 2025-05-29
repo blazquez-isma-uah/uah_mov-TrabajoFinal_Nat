@@ -10,7 +10,7 @@
     tools:context=".FormularioActivity">
 
     <!-- Campos obtenidos de la actividad anterior y rellenados automáticamente con los datos de la película -->
-    <TextView android:text="@string/tituloPelicula"
+    <TextView android:text="@string/titulo_pelicula"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView android:text="@string/actorPrincipal"
+    <TextView android:text="@string/actor_principal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content" />
 
     <!-- Campo para introducir datos por parte del usuario -->
-    <TextView android:text="@string/fechaVisionado"
+    <TextView android:text="@string/fecha_visionado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
@@ -52,7 +52,7 @@
         android:focusable="false"
         android:clickable="true" />
 
-    <TextView android:text="@string/ciudadVisionado"
+    <TextView android:text="@string/ciudad_visionado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
@@ -62,7 +62,7 @@
 
     <Button
         android:id="@+id/buttonGuardar"
-        android:text="@string/guardarPelicula"
+        android:text="@string/guardar_pelicula"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"/>

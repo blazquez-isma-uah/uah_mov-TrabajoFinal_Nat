@@ -11,7 +11,7 @@
         android:id="@+id/textViewTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tituloPelicula"
+        android:text="@string/titulo_pelicula"
         android:textSize="18sp"
         android:textStyle="bold" />
 

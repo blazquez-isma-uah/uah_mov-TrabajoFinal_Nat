@@ -45,9 +45,11 @@ public class PeliculasGuardadasAdapter extends RecyclerView.Adapter<PeliculasGua
     public void onBindViewHolder(@NonNull PeliculaViewHolder holder, int position) {
         PeliculaGuardada peliculaGuardada = lista.get(position);
 
-        String titulo = "Título: " + peliculaGuardada.titulo;
-        String detalles = "Año: " + peliculaGuardada.anio + "\nActor: " + peliculaGuardada.actorPrincipal +
-                "\nFecha: " + peliculaGuardada.fecha + "\nCiudad: " + peliculaGuardada.ciudad;
+        String titulo = R.string.titulo_pelicula + ": " + peliculaGuardada.titulo;
+        String detalles = R.string.anio + ": " + peliculaGuardada.anio +
+                "\n" + R.string.actor_principal + ": " + peliculaGuardada.actorPrincipal +
+                "\n" + R.string.fecha_visionado + ": " + peliculaGuardada.fecha +
+                "\n" + R.string.ciudad_visionado + ": " + peliculaGuardada.ciudad;
 
         holder.textTitulo.setText(titulo);
         holder.textDetalles.setText(detalles);
@@ -55,17 +57,17 @@ public class PeliculasGuardadasAdapter extends RecyclerView.Adapter<PeliculasGua
         // Al hacer long click, preguntar si se quiere borrar
         holder.itemView.setOnLongClickListener(v -> {
             new AlertDialog.Builder(contexto)
-                    .setTitle("Eliminar película")
-                    .setMessage("¿Estás seguro de eliminar esta película?")
-                    .setPositiveButton("Sí", (dialog, which) -> {
+                    .setTitle(R.string.titulo_alerta_eliminar)
+                    .setMessage(R.string.mensaje_alerta_eliminar)
+                    .setPositiveButton(R.string.aceptar, (dialog, which) -> {
                         AppDatabase db = AppDatabase.getInstance(contexto);
                         db.peliculaDao().eliminarPorId(peliculaGuardada.id);
                         lista.remove(position);
                         notifyItemRemoved(position);
-                        Toast.makeText(contexto, "Película eliminada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(contexto, R.string.pelicula_eliminada, Toast.LENGTH_SHORT).show();
                         listener.onItemDeleted();
                     })
-                    .setNegativeButton("Cancelar", null)
+                    .setNegativeButton(R.string.cancelar, null)
                     .show();
             return true;
         });

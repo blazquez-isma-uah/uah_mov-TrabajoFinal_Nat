@@ -40,10 +40,10 @@ public class ListadoPeliculasActivity extends AppCompatActivity {
 
         buttonEliminarTodas.setOnClickListener(v -> {
             new AlertDialog.Builder(this)
-                .setTitle("Eliminar todas las películas")
-                .setMessage("¿Estás seguro de que quieres eliminar todas las películas guardadas?")
-                .setPositiveButton("Sí", (dialog, which) -> eliminarTodasPeliculas())
-                .setNegativeButton("Cancelar", null)
+                .setTitle(R.string.eliminar_todas_titulo)
+                .setMessage(R.string.eliminar_todas_mensaje)
+                .setPositiveButton(R.string.aceptar, (dialog, which) -> eliminarTodasPeliculas())
+                .setNegativeButton(R.string.cancelar, null)
                 .show();
         });
 
@@ -60,8 +60,8 @@ public class ListadoPeliculasActivity extends AppCompatActivity {
 
         // Mostrar mensaje de confirmación
         new AlertDialog.Builder(this)
-                .setMessage("Todas las películas han sido eliminadas.")
-                .setPositiveButton("Aceptar", null)
+                .setMessage(R.string.peliculas_eliminadas)
+                .setPositiveButton(R.string.aceptar, null)
                 .show();
     }
 
