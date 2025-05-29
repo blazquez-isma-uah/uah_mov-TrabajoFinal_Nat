@@ -31,5 +31,8 @@
     <string name="peliculas_eliminadas">Todas las películas han sido eliminadas.</string>
     <string name="aceptar">OK</string>
     <string name="cancelar">Cancelar</string>
+    <string name="confirmar_salida_titulo">Salir de la aplicación</string>
+    <string name="confirmar_salida_mensaje">¿Estás seguro de que deseas salir?</string>
+    <string name="selecciona_una_fecha">Selecciona una fecha</string>
 
 </resources>

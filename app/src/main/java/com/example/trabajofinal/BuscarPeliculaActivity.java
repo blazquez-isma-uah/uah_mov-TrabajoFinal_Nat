@@ -71,7 +71,7 @@ public class BuscarPeliculaActivity extends AppCompatActivity {
             String titulo = editTextBuscar.getText().toString().trim();
             if (titulo.isEmpty()) {
                 // Mostrar un mensaje de error si el campo está vacío
-                Toast.makeText(this, R.string.error_titulo, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.error_titulo), Toast.LENGTH_SHORT).show();
                 return;
             }
             // Simular una búsqueda de películas (despues se hará una consulta a una API o base de datos)
@@ -109,10 +109,10 @@ public class BuscarPeliculaActivity extends AppCompatActivity {
                                 getString(R.string.resultados_encontrados, listaPeliculas.size()), Toast.LENGTH_SHORT).show();
 
                     } else {
-                        Toast.makeText(BuscarPeliculaActivity.this, R.string.sin_resultados, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BuscarPeliculaActivity.this, getString(R.string.sin_resultados), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(BuscarPeliculaActivity.this, R.string.error_busqueda, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BuscarPeliculaActivity.this, getString(R.string.error_busqueda), Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -120,7 +120,7 @@ public class BuscarPeliculaActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<SearchResponseOMDB> call, Throwable t) {
                 Toast.makeText(BuscarPeliculaActivity.this,
-                        R.string.error_conexion + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        getString(R.string.error_conexion) + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -145,13 +145,13 @@ public class BuscarPeliculaActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 } else {
-                    Toast.makeText(BuscarPeliculaActivity.this, R.string.error_detalle, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BuscarPeliculaActivity.this, getString(R.string.error_detalle), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<PeliculaOMDB> call, Throwable t) {
-                Toast.makeText(BuscarPeliculaActivity.this, R.string.error_conexion + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(BuscarPeliculaActivity.this, getString(R.string.error_conexion) + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

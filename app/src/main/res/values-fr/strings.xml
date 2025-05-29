@@ -29,5 +29,8 @@
     <string name="peliculas_eliminadas">Tous les films ont été supprimés.</string>
     <string name="aceptar">OK</string>
     <string name="cancelar">Annuler</string>
+    <string name="confirmar_salida_titulo">Quitter l\'application</string>
+    <string name="confirmar_salida_mensaje">Êtes-vous sûr de vouloir quitter?</string>
+    <string name="selecciona_una_fecha">Sélectionnez une date</string>
 
 </resources>

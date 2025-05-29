@@ -69,7 +69,7 @@ public class FormularioActivity extends AppCompatActivity {
             // Validar campos
             if (fecha.isEmpty() || ciudad.isEmpty()) {
                 // Mostrar mensaje de error
-                Toast.makeText(this, R.string.campos_vacios, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.campos_vacios), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -86,7 +86,7 @@ public class FormularioActivity extends AppCompatActivity {
             AppDatabase db = AppDatabase.getInstance(this);
             db.peliculaDao().insertarPelicula(peliculaGuardada);
 
-            Toast.makeText(this, R.string.pelicula_guardada, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.pelicula_guardada), Toast.LENGTH_LONG).show();
             finish();
         });
 

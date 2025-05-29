@@ -45,11 +45,14 @@ public class PeliculasGuardadasAdapter extends RecyclerView.Adapter<PeliculasGua
     public void onBindViewHolder(@NonNull PeliculaViewHolder holder, int position) {
         PeliculaGuardada peliculaGuardada = lista.get(position);
 
-        String titulo = R.string.titulo_pelicula + ": " + peliculaGuardada.titulo;
-        String detalles = R.string.anio + ": " + peliculaGuardada.anio +
-                "\n" + R.string.actor_principal + ": " + peliculaGuardada.actorPrincipal +
-                "\n" + R.string.fecha_visionado + ": " + peliculaGuardada.fecha +
-                "\n" + R.string.ciudad_visionado + ": " + peliculaGuardada.ciudad;
+        String titulo = contexto.getString(R.string.titulo_pelicula) +
+                ": " + peliculaGuardada.titulo;
+
+        // anio, actorPrincipal, fecha y ciudad
+        String detalles = contexto.getString(R.string.anio) + ": " + peliculaGuardada.anio + "\n" +
+                contexto.getString(R.string.actor_principal) + ": " + peliculaGuardada.actorPrincipal + "\n" +
+                contexto.getString(R.string.fecha_visionado) + ": " + peliculaGuardada.fecha + "\n" +
+                contexto.getString(R.string.ciudad_visionado) + ": " + peliculaGuardada.ciudad;
 
         holder.textTitulo.setText(titulo);
         holder.textDetalles.setText(detalles);
@@ -57,17 +60,17 @@ public class PeliculasGuardadasAdapter extends RecyclerView.Adapter<PeliculasGua
         // Al hacer long click, preguntar si se quiere borrar
         holder.itemView.setOnLongClickListener(v -> {
             new AlertDialog.Builder(contexto)
-                    .setTitle(R.string.titulo_alerta_eliminar)
-                    .setMessage(R.string.mensaje_alerta_eliminar)
-                    .setPositiveButton(R.string.aceptar, (dialog, which) -> {
+                    .setTitle(contexto.getString(R.string.titulo_alerta_eliminar))
+                    .setMessage(contexto.getString(R.string.mensaje_alerta_eliminar))
+                    .setPositiveButton(contexto.getString(R.string.aceptar), (dialog, which) -> {
                         AppDatabase db = AppDatabase.getInstance(contexto);
                         db.peliculaDao().eliminarPorId(peliculaGuardada.id);
                         lista.remove(position);
                         notifyItemRemoved(position);
-                        Toast.makeText(contexto, R.string.pelicula_eliminada, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(contexto, contexto.getString(R.string.pelicula_eliminada), Toast.LENGTH_SHORT).show();
                         listener.onItemDeleted();
                     })
-                    .setNegativeButton(R.string.cancelar, null)
+                    .setNegativeButton(contexto.getString(R.string.cancelar), null)
                     .show();
             return true;
         });

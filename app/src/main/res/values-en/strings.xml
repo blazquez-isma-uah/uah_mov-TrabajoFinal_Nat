@@ -29,5 +29,8 @@
     <string name="peliculas_eliminadas">All movies have been deleted.</string>
     <string name="aceptar">OK</string>
     <string name="cancelar">Cancel</string>
+    <string name="confirmar_salida_titulo">Exit Application</string>
+    <string name="confirmar_salida_mensaje">Are you sure you want to exit?</string>
+    <string name="selecciona_una_fecha">Select a date</string>
 
 </resources>
