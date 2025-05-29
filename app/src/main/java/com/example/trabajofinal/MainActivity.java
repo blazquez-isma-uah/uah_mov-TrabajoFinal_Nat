@@ -1,5 +1,6 @@
 package com.example.trabajofinal;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -33,7 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Botón para salir de la aplicación
         buttonSalir.setOnClickListener(v -> {
-            finish();
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle(getString(R.string.confirmar_salida_titulo))
+                    .setMessage(getString(R.string.confirmar_salida_mensaje))
+                    .setPositiveButton(getString(R.string.aceptar), (dialog, which) -> {
+                        finishAffinity(); // Cierra completamente la app
+                    })
+                    .setNegativeButton(getString(R.string.cancelar), null)
+                    .show();
         });
 
     }
