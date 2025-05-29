@@ -1,7 +1,7 @@
 <resources>
     <string name="ombd_api_key" translatable="false">7362165d</string>
 
-    <string name="app_name">TrabajoFinal</string>
+    <string name="app_name" translatable="false">TrabajoFinal</string>
     <string name="btn_añadir">Añadir Película</string>
     <string name="btn_listar">Consultar Películas</string>
     <string name="btn_salir">Salir</string>

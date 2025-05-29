@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">TravailFinal</string>
     <string name="btn_añadir">Ajouter un film</string>
     <string name="btn_listar">Consulter les films</string>
     <string name="btn_salir">Quitter</string>
