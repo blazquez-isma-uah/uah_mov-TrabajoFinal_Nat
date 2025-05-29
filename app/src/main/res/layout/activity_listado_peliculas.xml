@@ -7,7 +7,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
     tools:context=".ListadoPeliculasActivity">
+
+    <!-- LinearLayout para el Spinner y el botón de ordenar
+         gravity="center_vertical" hace que los elementos se alineen verticalmente en el centro del LinearLayout
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="12dp">
+
+        <Spinner
+            android:id="@+id/spinnerOrdenar"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/buttonOrdenar"
+            android:text="@string/btn_ordenar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPeliculas"

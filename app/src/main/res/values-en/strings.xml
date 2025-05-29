@@ -31,5 +31,14 @@
     <string name="confirmar_salida_titulo">Exit Application</string>
     <string name="confirmar_salida_mensaje">Are you sure you want to exit?</string>
     <string name="selecciona_una_fecha">Select a date</string>
+    <string name="ordenar_por">Sort by</string>
+    <string name="btn_ordenar">Sort</string>
+    <string-array name="campos_ordenacion">
+        <item>@string/titulo_pelicula</item>
+        <item>@string/anio</item>
+        <item>@string/actor_principal</item>
+        <item>@string/fecha_visionado</item>
+        <item>@string/ciudad_visionado</item>
+    </string-array>
 
 </resources>

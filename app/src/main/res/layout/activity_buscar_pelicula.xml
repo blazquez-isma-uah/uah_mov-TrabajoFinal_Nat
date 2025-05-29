@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:orientation="vertical"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
     tools:context=".BuscarPeliculaActivity">
 
     <!-- Campo de texto para introducir el título a buscar -->
@@ -23,7 +25,8 @@
         android:id="@+id/buttonBuscar"
         android:text="@string/btn_buscar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:fillColor="?attr/colorControlNormal"/>
 
     <!-- RecyclerView para mostrar los resultados -->
     <androidx.recyclerview.widget.RecyclerView
