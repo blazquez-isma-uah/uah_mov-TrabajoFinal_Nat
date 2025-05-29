@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +19,7 @@ import com.example.trabajofinal.sqlite.PeliculaGuardada;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
@@ -28,6 +31,10 @@ public class ListadoPeliculasActivity extends AppCompatActivity {
 
     Spinner spinnerOrdener;
     Button buttonOrdenar;
+    TextView textOrden;
+
+    SwitchCompat switchOrden;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +46,8 @@ public class ListadoPeliculasActivity extends AppCompatActivity {
         buttonEliminarTodas = findViewById(R.id.buttonEliminarTodas);
         spinnerOrdener = findViewById(R.id.spinnerOrdenar);
         buttonOrdenar = findViewById(R.id.buttonOrdenar);
+        textOrden = findViewById(R.id.textOrden);
+        switchOrden = findViewById(R.id.switchOrden);
 
         // Adaptador de spinner con opciones de ordenación
         ArrayAdapter<CharSequence> adapterSpinner = ArrayAdapter.createFromResource(this,
@@ -49,12 +58,21 @@ public class ListadoPeliculasActivity extends AppCompatActivity {
         // Configurar el RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        cargarPeliculas("id"); // Cargar películas por ID inicialmente
+        cargarPeliculas("id", false); // Cargar películas por defecto ordenadas por ID ascendente
 
+        // Actualizar el texto al cambiar el switch
+        switchOrden.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                textOrden.setText(getString(R.string.orden_descendente));
+            } else {
+                textOrden.setText(getString(R.string.orden_ascendente));
+            }
+        });
 
         buttonOrdenar.setOnClickListener(v -> {
             String campoSeleccionado = spinnerOrdener.getSelectedItem().toString();
-            cargarPeliculas(campoSeleccionado);
+            boolean descendente = switchOrden.isChecked();
+            cargarPeliculas(campoSeleccionado, descendente);
         });
 
         buttonEliminarTodas.setOnClickListener(v -> {
@@ -75,7 +93,7 @@ public class ListadoPeliculasActivity extends AppCompatActivity {
         AppDatabase db = AppDatabase.getInstance(this);
         db.peliculaDao().eliminarTodas();
         // Recargar la lista de películas
-        cargarPeliculas("id");
+        cargarPeliculas("id", false);
 
         // Mostrar mensaje de confirmación
         new AlertDialog.Builder(this)
@@ -84,8 +102,7 @@ public class ListadoPeliculasActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void cargarPeliculas(String ordenCampo) {
-        System.out.println("Ordenando por: " + ordenCampo);
+    private void cargarPeliculas(String ordenCampo, boolean descendente) {
         AppDatabase db = AppDatabase.getInstance(this);
         List<PeliculaGuardada> listaPeliculas;
 
@@ -96,34 +113,39 @@ public class ListadoPeliculasActivity extends AppCompatActivity {
         String ciudad = getString(R.string.ciudad_visionado);
         listaPeliculas = db.peliculaDao().obtenerTodas();
 
+        Comparator<PeliculaGuardada> comparador = null;
+
         if(ordenCampo.equals(titulo)){
-            listaPeliculas.sort(Comparator.comparing(p -> p.titulo));
+            comparador = Comparator.comparing(p -> p.titulo.toLowerCase());
         }
         else if(ordenCampo.equals(anio)){
-            listaPeliculas.sort(Comparator.comparing(p -> p.anio));
+            comparador = Comparator.comparing(p -> p.anio);
         }
         else if(ordenCampo.equals(actor)){
-            listaPeliculas.sort(Comparator.comparing(p -> p.actorPrincipal));
+            comparador = Comparator.comparing(p -> p.actorPrincipal.toLowerCase());
         }
         else if(ordenCampo.equals(fecha)){
-            // Convertir la fecha de String a Date para ordenar correctamente
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            listaPeliculas.sort((p1, p2) -> {
+            comparador = Comparator.comparing(p -> {
                 try {
-                    Date date1 = new Date(Objects.requireNonNull(sdf.parse(p1.fecha)).getTime());
-                    Date date2 = new Date(Objects.requireNonNull(sdf.parse(p2.fecha)).getTime());
-                    return date1.compareTo(date2);
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    return sdf.parse(p.fecha);
                 } catch (Exception e) {
-                    return 0; // Si hay un error, no cambiar el orden
+                    return null; // Si hay un error, no cambiar el orden
                 }
             });
         }
         else if(ordenCampo.equals(ciudad)){
-            listaPeliculas.sort(Comparator.comparing(p -> p.ciudad));
+            comparador = Comparator.comparing(p -> p.ciudad.toLowerCase());
         }
         else {
-            listaPeliculas.sort(Comparator.comparing(p -> p.id));
+            comparador = Comparator.comparing(p -> p.id);
         }
+
+        if (descendente) {
+            comparador = comparador.reversed();
+        }
+
+        listaPeliculas.sort(comparador);
 
         PeliculasGuardadasAdapter adapter = new PeliculasGuardadasAdapter(this, listaPeliculas, () -> {});
         recyclerView.setAdapter(adapter);

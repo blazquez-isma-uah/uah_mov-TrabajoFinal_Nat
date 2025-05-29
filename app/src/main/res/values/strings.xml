@@ -36,6 +36,10 @@
     <string name="selecciona_una_fecha">Selecciona una fecha</string>
     <string name="ordenar_por">Ordenar por</string>
     <string name="btn_ordenar">Ordenar</string>
+    <string name="desc">Desc</string>
+    <string name="asc">Asc</string>
+    <string name="orden_ascendente">Ascendente</string>
+    <string name="orden_descendente">Descendente</string>
     <string-array name="campos_ordenacion">
         <item>@string/titulo_pelicula</item>
         <item>@string/anio</item>

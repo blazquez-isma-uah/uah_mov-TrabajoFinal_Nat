@@ -27,6 +27,29 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"/>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="8dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/textOrden"
+                android:text="@string/orden_ascendente"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchOrden"
+                android:textOn="@string/desc"
+                android:textOff="@string/asc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
         <Button
             android:id="@+id/buttonOrdenar"
             android:text="@string/btn_ordenar"
