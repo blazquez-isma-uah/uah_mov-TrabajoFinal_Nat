@@ -20,9 +20,7 @@ import java.util.List;
 public class ListadoPeliculasActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private PeliculasGuardadasAdapter adapter;
-    private Button buttonEliminarTodas, buttonVolver;
-    private List<PeliculaGuardada> listaPeliculas;
+    private Button buttonEliminarTodas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +30,6 @@ public class ListadoPeliculasActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerViewPeliculas);
         buttonEliminarTodas = findViewById(R.id.buttonEliminarTodas);
-        buttonVolver = findViewById(R.id.buttonVolver);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -47,9 +44,9 @@ public class ListadoPeliculasActivity extends AppCompatActivity {
                 .show();
         });
 
-        buttonVolver.setOnClickListener(v -> {
-            finish(); // Cierra la actividad y vuelve a la anterior
-        });
+        Button botonAtras = findViewById(R.id.buttonAtras);
+        botonAtras.setOnClickListener(v -> finish());
+
     }
 
     private void eliminarTodasPeliculas() {
@@ -67,9 +64,10 @@ public class ListadoPeliculasActivity extends AppCompatActivity {
 
     private void cargarPeliculas() {
         AppDatabase db = AppDatabase.getInstance(this);
-        listaPeliculas = db.peliculaDao().obtenerTodas();
+        List<PeliculaGuardada> listaPeliculas = db.peliculaDao().obtenerTodas();
 
-        adapter = new PeliculasGuardadasAdapter(this, listaPeliculas, () -> {});
+        PeliculasGuardadasAdapter adapter = new PeliculasGuardadasAdapter(this, listaPeliculas, () -> {
+        });
         recyclerView.setAdapter(adapter);
     }
 }

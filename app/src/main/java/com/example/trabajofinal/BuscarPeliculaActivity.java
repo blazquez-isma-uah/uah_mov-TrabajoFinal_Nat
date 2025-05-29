@@ -78,6 +78,8 @@ public class BuscarPeliculaActivity extends AppCompatActivity {
             buscarPeliculasOMDB(titulo);
         });
 
+        Button botonAtras = findViewById(R.id.buttonAtras);
+        botonAtras.setOnClickListener(v -> finish());
     }
 
     public void buscarPeliculasOMDB(String titulo){
@@ -153,5 +155,7 @@ public class BuscarPeliculaActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 }

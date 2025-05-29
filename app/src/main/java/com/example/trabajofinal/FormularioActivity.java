@@ -90,6 +90,8 @@ public class FormularioActivity extends AppCompatActivity {
             finish();
         });
 
+        Button botonAtras = findViewById(R.id.buttonAtras);
+        botonAtras.setOnClickListener(v -> finish());
 
     }
 }
