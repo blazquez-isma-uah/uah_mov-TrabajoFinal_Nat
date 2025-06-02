@@ -6,6 +6,9 @@ import androidx.room.Query;
 
 import java.util.List;
 
+/**
+ * Interfaz DAO para manejar las operaciones de la base de datos relacionadas con las películas guardadas.
+ */
 @Dao
 public interface PeliculaDao {
 

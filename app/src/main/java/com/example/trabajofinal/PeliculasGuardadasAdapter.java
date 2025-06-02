@@ -17,7 +17,9 @@ import com.example.trabajofinal.sqlite.PeliculaGuardada;
 
 import java.util.List;
 
-// Adapter para manejar la lista de películas guardadas
+/**
+ * Adaptador para mostrar una lista de películas guardadas en un RecyclerView.
+ */
 public class PeliculasGuardadasAdapter extends RecyclerView.Adapter<PeliculasGuardadasAdapter.PeliculaViewHolder> {
 
     private List<PeliculaGuardada> lista;
@@ -58,22 +60,33 @@ public class PeliculasGuardadasAdapter extends RecyclerView.Adapter<PeliculasGua
         holder.textDetalles.setText(detalles);
 
         // Al hacer long click, preguntar si se quiere borrar
-        holder.itemView.setOnLongClickListener(v -> {
-            new AlertDialog.Builder(contexto)
-                    .setTitle(contexto.getString(R.string.titulo_alerta_eliminar))
-                    .setMessage(contexto.getString(R.string.mensaje_alerta_eliminar))
-                    .setPositiveButton(contexto.getString(R.string.aceptar), (dialog, which) -> {
-                        AppDatabase db = AppDatabase.getInstance(contexto);
-                        db.peliculaDao().eliminarPorId(peliculaGuardada.id);
-                        lista.remove(position);
-                        notifyItemRemoved(position);
-                        Toast.makeText(contexto, contexto.getString(R.string.pelicula_eliminada), Toast.LENGTH_SHORT).show();
-                        listener.onItemDeleted();
-                    })
-                    .setNegativeButton(contexto.getString(R.string.cancelar), null)
-                    .show();
-            return true;
-        });
+        holder.itemView.setOnLongClickListener(v -> onLongClickItem(position, peliculaGuardada));
+    }
+
+    /**
+     * Maneja el evento de long click en un item del RecyclerView.
+     * Muestra un diálogo de confirmación para eliminar la película guardada.
+     *
+     * @param position posición del item en la lista
+     * @param peliculaGuardada película guardada que se desea eliminar
+     * @return
+     */
+    private boolean onLongClickItem(int position, PeliculaGuardada peliculaGuardada) {
+        new AlertDialog.Builder(contexto)
+                .setTitle(contexto.getString(R.string.titulo_alerta_eliminar))
+                .setMessage(contexto.getString(R.string.mensaje_alerta_eliminar))
+                .setPositiveButton(contexto.getString(R.string.aceptar), (dialog, which) -> {
+                    // Eliminar la película de la base de datos y actualizar la lista
+                    AppDatabase db = AppDatabase.getInstance(contexto);
+                    db.peliculaDao().eliminarPorId(peliculaGuardada.id);
+                    lista.remove(position);
+                    notifyItemRemoved(position);
+                    Toast.makeText(contexto, contexto.getString(R.string.pelicula_eliminada), Toast.LENGTH_SHORT).show();
+                    listener.onItemDeleted();
+                })
+                .setNegativeButton(contexto.getString(R.string.cancelar), null)
+                .show();
+        return true;
     }
 
     @Override

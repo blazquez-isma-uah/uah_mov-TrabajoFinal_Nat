@@ -2,6 +2,10 @@ package com.example.trabajofinal.omdb;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Clase que representa una película obtenida de la API OMDB.
+ * Contiene información básica como título, año, ID de IMDb y actores.
+ */
 public class PeliculaOMDB {
 
     @SerializedName("Title")
@@ -36,13 +40,20 @@ public class PeliculaOMDB {
         return actores;
     }
 
+    /**
+     * Obtiene el actor principal de la película.
+     * Asume que el primer actor en la lista es el principal.
+     * Si no hay actores, retorna "Desconocido".
+     *
+     * @return El nombre del actor principal o "Desconocido" si no hay actores.
+     */
     public String getActorPrincipal(){
         if (actores != null && !actores.isEmpty()) {
             String[] actoresArray = actores.split(",");
             if (actoresArray.length > 0) {
-                return actoresArray[0].trim(); // Retorna el primer actor como actor principal
+                return actoresArray[0].trim();
             }
         }
-        return "Desconocido"; // Retorna "Desconocido" si no hay actores
+        return "Desconocido";
     }
 }

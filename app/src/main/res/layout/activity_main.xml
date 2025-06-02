@@ -11,7 +11,7 @@
     android:layout_marginBottom="16dp"
     tools:context=".MainActivity">
 
-    <!-- Título de la aplicación -->
+    <!-- Título de la aplicación dividido en tres líneas-->
     <LinearLayout
         android:id="@+id/layoutTitulos"
         android:orientation="vertical"
@@ -79,7 +79,7 @@
     </LinearLayout>
 
 
-    <!-- Botón para listar películas -->
+    <!-- Botón para salir de la aplicación -->
     <Button
         android:id="@+id/buttonSalir"
         android:text="@string/btn_salir"

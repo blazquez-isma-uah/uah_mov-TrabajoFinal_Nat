@@ -9,6 +9,7 @@
     android:padding="16dp"
     tools:context=".FormularioActivity">
 
+    <!-- Contenedor principal con los elementos del formulario -->
     <LinearLayout
         android:id="@+id/layoutFormulario"
         android:orientation="vertical"

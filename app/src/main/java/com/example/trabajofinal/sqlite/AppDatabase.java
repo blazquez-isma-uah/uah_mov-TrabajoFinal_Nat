@@ -16,7 +16,13 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract PeliculaDao peliculaDao();
 
-    // Singleton para obtener la instancia de la base de datos
+    /**
+     * Método para obtener una instancia de la base de datos.
+     * Utiliza el patrón Singleton para asegurar que solo haya una instancia.
+     *
+     * @param contexto Contexto de la aplicación
+     * @return Instancia de AppDatabase
+     */
     public static AppDatabase getInstance(Context contexto) {
         if (instance == null) {
             instance = Room.databaseBuilder(

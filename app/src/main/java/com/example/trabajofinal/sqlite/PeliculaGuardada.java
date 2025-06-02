@@ -3,6 +3,10 @@ package com.example.trabajofinal.sqlite;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * Clase que representa una película guardada en la base de datos.
+ * Esta clase se utiliza para mapear los datos de las películas guardadas a una tabla en la base de datos Room.
+ */
 @Entity
 public class PeliculaGuardada {
 

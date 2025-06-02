@@ -11,9 +11,7 @@
     android:layout_marginBottom="16dp"
     tools:context=".ListadoPeliculasActivity">
 
-    <!-- LinearLayout para el Spinner y el botón de ordenar
-         gravity="center_vertical" hace que los elementos se alineen verticalmente en el centro del LinearLayout
-    -->
+    <!-- LinearLayout para el Spinner y el botón de ordenar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +19,7 @@
         android:gravity="center_vertical"
         android:layout_marginBottom="12dp">
 
+        <!-- Spinner para seleccionar el campo por el cual ordenar las películas -->
         <Spinner
             android:id="@+id/spinnerOrdenar"
             android:layout_width="0dp"
@@ -41,6 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
+            <!-- SwitchCompat para seleccionar el orden ascendente o descendente -->
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switchOrden"
                 android:textOn="@string/desc"
@@ -58,7 +58,7 @@
             android:layout_marginStart="8dp"/>
     </LinearLayout>
 
-
+    <!-- RecyclerView para mostrar la lista de películas -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPeliculas"
         android:layout_width="match_parent"
@@ -66,9 +66,7 @@
         android:layout_weight="1"/>
 
     <!-- Botones para eliminar todas las películas y volver atrás
-     gravity="center_vertical" hace que los botones se alineen verticalmente en el centro del LinearLayout
-     y weightSum="2" permite que ambos botones ocupen el mismo espacio disponible en la pantalla
-      -->
+     weightSum="2" permite que ambos botones ocupen el mismo espacio disponible en la pantalla -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

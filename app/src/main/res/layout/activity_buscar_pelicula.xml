@@ -36,6 +36,7 @@
         android:layout_weight="1"
         android:layout_marginTop="16dp"/>
 
+    <!-- Botón para volver a la pantalla anterior -->
     <Button
         android:id="@+id/buttonAtras"
         android:text="@string/volver"
