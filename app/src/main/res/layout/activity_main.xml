@@ -1,32 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     android:layout_marginTop="16dp"
     android:layout_marginBottom="16dp"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/buttonAnadir"
-        android:text="@string/btn_añadir"
+    <!-- Título de la aplicación -->
+    <LinearLayout
+        android:id="@+id/layoutTitulos"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp">
 
-    <Button
-        android:id="@+id/buttonListar"
-        android:text="@string/btn_listar"
+        <TextView
+            android:id="@+id/textTitulo_1"
+            android:text="@string/text_titulo_1"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/textTitulo_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_titulo_2"
+            android:textAlignment="center"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="25dp"/>
+
+        <TextView
+            android:id="@+id/textTitulo_3"
+            android:text="@string/text_titulo_3"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <!-- Grupo centrado con los botones de Añadir y Consultar -->
+    <LinearLayout
+        android:id="@+id/layoutCentro"
+        android:orientation="vertical"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <Button
+            android:id="@+id/buttonAnadir"
+            android:text="@string/btn_añadir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/buttonListar"
+            android:text="@string/btn_listar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <!-- Botón para listar películas -->
     <Button
         android:id="@+id/buttonSalir"
         android:text="@string/btn_salir"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:backgroundTint="#DD3333"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"
+        />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
